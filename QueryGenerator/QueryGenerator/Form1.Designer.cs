@@ -57,11 +57,14 @@
             this.toolStripDeleteColumn = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsSelectTable = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsSelectWhere = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripDeleteWhere = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tpSelect.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.cmsSelectColumn.SuspendLayout();
             this.cmsSelectTable.SuspendLayout();
+            this.cmsSelectWhere.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -114,6 +117,7 @@
             this.btnSelect.TabIndex = 10;
             this.btnSelect.Text = "Сформировать";
             this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // lbSelectWhere
             // 
@@ -133,9 +137,11 @@
             this.btnSelectAddWhere.TabIndex = 8;
             this.btnSelectAddWhere.Text = "Добавить";
             this.btnSelectAddWhere.UseVisualStyleBackColor = true;
+            this.btnSelectAddWhere.Click += new System.EventHandler(this.btnSelectAddWhere_Click);
             // 
             // txtSelectOperand
             // 
+            this.txtSelectOperand.DropDownWidth = 100;
             this.txtSelectOperand.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txtSelectOperand.FormattingEnabled = true;
             this.txtSelectOperand.Items.AddRange(new object[] {
@@ -144,7 +150,8 @@
             "<",
             ">=",
             "<=",
-            "in"});
+            "IN",
+            "BETWEEN"});
             this.txtSelectOperand.Location = new System.Drawing.Point(138, 471);
             this.txtSelectOperand.Name = "txtSelectOperand";
             this.txtSelectOperand.Size = new System.Drawing.Size(56, 28);
@@ -196,6 +203,7 @@
             this.cbSelectYes.TabIndex = 0;
             this.cbSelectYes.Text = "Да";
             this.cbSelectYes.UseVisualStyleBackColor = true;
+            this.cbSelectYes.CheckedChanged += new System.EventHandler(this.cbSelectYes_CheckedChanged);
             // 
             // label1
             // 
@@ -347,9 +355,23 @@
             // toolStripDelete
             // 
             this.toolStripDelete.Name = "toolStripDelete";
-            this.toolStripDelete.Size = new System.Drawing.Size(180, 22);
+            this.toolStripDelete.Size = new System.Drawing.Size(118, 22);
             this.toolStripDelete.Text = "Удалить";
             this.toolStripDelete.Click += new System.EventHandler(this.toolStripDelete_Click);
+            // 
+            // cmsSelectWhere
+            // 
+            this.cmsSelectWhere.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripDeleteWhere});
+            this.cmsSelectWhere.Name = "cmsSelectWhere";
+            this.cmsSelectWhere.Size = new System.Drawing.Size(119, 26);
+            // 
+            // toolStripDeleteWhere
+            // 
+            this.toolStripDeleteWhere.Name = "toolStripDeleteWhere";
+            this.toolStripDeleteWhere.Size = new System.Drawing.Size(180, 22);
+            this.toolStripDeleteWhere.Text = "Удалить";
+            this.toolStripDeleteWhere.Click += new System.EventHandler(this.toolStripDeleteWhere_Click);
             // 
             // FormQueryGenerator
             // 
@@ -370,6 +392,7 @@
             this.groupBox1.PerformLayout();
             this.cmsSelectColumn.ResumeLayout(false);
             this.cmsSelectTable.ResumeLayout(false);
+            this.cmsSelectWhere.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -404,6 +427,8 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripDeleteColumn;
         private System.Windows.Forms.ContextMenuStrip cmsSelectTable;
         private System.Windows.Forms.ToolStripMenuItem toolStripDelete;
+        private System.Windows.Forms.ContextMenuStrip cmsSelectWhere;
+        private System.Windows.Forms.ToolStripMenuItem toolStripDeleteWhere;
     }
 }
 

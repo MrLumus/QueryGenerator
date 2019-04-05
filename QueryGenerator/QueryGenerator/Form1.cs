@@ -22,6 +22,7 @@ namespace QueryGenerator
             //Контекстное меню для лист-боксов
             lbSelectColumns.ContextMenuStrip = cmsSelectColumn;
             lbSelectTables.ContextMenuStrip = cmsSelectTable;
+            lbSelectWhere.ContextMenuStrip = cmsSelectWhere;
 
             //Если нажата радио-кнопка "Нет" в условиях, то форма с условиями деактивируется
             bool where = false;
@@ -47,14 +48,15 @@ namespace QueryGenerator
         private void btnSelectAddColumn_Click(object sender, EventArgs e)
         {
             //Проверка на заполненность поля ввода
-            if(txtSelectAddColumn.Text == "")
+            if(IsNullTest.TextBox(txtSelectAddColumn))
             {
-                MessageBox.Show("Введите выбираемые данные!");
+                lbSelectColumns.BackColor = System.Drawing.Color.White;
+                lbSelectColumns.Items.Add(txtSelectAddColumn.Text);
+                txtSelectAddColumn.Text = "";
             }
             else
             {
-                lbSelectColumns.Items.Add(txtSelectAddColumn.Text);
-                txtSelectAddColumn.Text = "";
+                MessageBox.Show("Введите выбираемые данные!");
             }
         }
 
@@ -81,14 +83,112 @@ namespace QueryGenerator
         private void btnSelectAddTable_Click(object sender, EventArgs e)
         {
             //Проверка на заполненность поля ввода таблицы
-            if (txtSelectAddTable.Text == "")
+            if (IsNullTest.TextBox(txtSelectAddTable))
             {
-                MessageBox.Show("Введите название таблицы!");
+                lbSelectTables.BackColor = System.Drawing.Color.White;
+                lbSelectTables.Items.Add(txtSelectAddTable.Text);
+                txtSelectAddTable.Text = "";
             }
             else
             {
-                lbSelectTables.Items.Add(txtSelectAddTable.Text);
-                txtSelectAddTable.Text = "";
+                MessageBox.Show("Введите название таблицы!");
+            }
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            if (IsNullTest.ListBox(lbSelectColumns, lbSelectTables))
+            {
+                bool where = false;
+
+                GetValues selected = new GetValues();
+                CreateScript Query = new CreateScript();
+                string items = selected.GetValue(selected.ParseList(lbSelectColumns));
+                string tables = selected.GetValue(selected.ParseList(lbSelectTables));
+
+                if (cbSelectYes.Checked)
+                {
+                    where = true;
+                }
+                else
+                {
+                    where = false;
+                }
+
+                if (where)
+                {
+                    if (IsNullTest.ListBox(lbSelectWhere))
+                    {
+                        // КОД С УСЛОВИЯМИ
+                        string wheres = selected.GetWhere(selected.ParseList(lbSelectWhere));
+                        string query = Query.CreateQueryWhere(items, tables, wheres);
+                        MessageBox.Show(query);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Минимум одно условие!");
+                    }
+                    
+                }
+                else
+                {
+                    // КОД БЕЗ УСЛОВИЙ
+                    string query = Query.CreateQueryNonWhere(items, tables);
+                    MessageBox.Show(query);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Введите данные!");
+            }
+        }
+
+        private void btnSelectAddWhere_Click(object sender, EventArgs e)
+        {
+            string where = null;
+            if(IsNullTest.TextBox(txtSelectFirstWhere,txtSelectSecondWhere) && IsNullTest.ComboBox(txtSelectOperand))
+            {
+                lbSelectWhere.BackColor = System.Drawing.Color.White;
+                where = $"{txtSelectFirstWhere.Text} {txtSelectOperand.Text} {txtSelectSecondWhere.Text}";
+                lbSelectWhere.Items.Add(where);
+                txtSelectFirstWhere.Text = "";
+                txtSelectSecondWhere.Text = "";
+                txtSelectOperand.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Заполните поля условия!");
+            }
+        }
+
+        private void toolStripDeleteWhere_Click(object sender, EventArgs e)
+        {
+            //Удаление выбранного элемента
+            if (lbSelectWhere.SelectedItem != null)
+            {
+                int index = lbSelectWhere.SelectedIndex;
+                lbSelectWhere.Items.RemoveAt(index);
+            }
+        }
+
+        private void cbSelectYes_CheckedChanged(object sender, EventArgs e)
+        {
+            bool check = cbSelectYes.Checked;
+            if (!check)
+            {
+                txtSelectFirstWhere.Enabled = false;
+                txtSelectOperand.Enabled = false;
+                txtSelectSecondWhere.Enabled = false;
+                btnSelectAddWhere.Enabled = false;
+                lbSelectWhere.Enabled = false;
+            }
+            else
+            {
+                txtSelectFirstWhere.Enabled = true;
+                txtSelectOperand.Enabled = true;
+                txtSelectSecondWhere.Enabled = true;
+                btnSelectAddWhere.Enabled = true;
+                lbSelectWhere.Enabled = true;
             }
         }
     }
