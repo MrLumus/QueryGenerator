@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormQueryGenerator));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpSelect = new System.Windows.Forms.TabPage();
             this.btnSelect = new System.Windows.Forms.Button();
@@ -369,7 +370,7 @@
             // toolStripDeleteWhere
             // 
             this.toolStripDeleteWhere.Name = "toolStripDeleteWhere";
-            this.toolStripDeleteWhere.Size = new System.Drawing.Size(180, 22);
+            this.toolStripDeleteWhere.Size = new System.Drawing.Size(118, 22);
             this.toolStripDeleteWhere.Text = "Удалить";
             this.toolStripDeleteWhere.Click += new System.EventHandler(this.toolStripDeleteWhere_Click);
             // 
@@ -380,6 +381,7 @@
             this.ClientSize = new System.Drawing.Size(660, 635);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FormQueryGenerator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
