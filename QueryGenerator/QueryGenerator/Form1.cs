@@ -23,26 +23,32 @@ namespace QueryGenerator
             lbSelectColumns.ContextMenuStrip = cmsSelectColumn;
             lbSelectTables.ContextMenuStrip = cmsSelectTable;
             lbSelectWhere.ContextMenuStrip = cmsSelectWhere;
+            lbInsertColumns.ContextMenuStrip = cmsInsertColumn;
+            lbInsertValues.ContextMenuStrip = cmsInsertValue;
+            lbInsertWhere.ContextMenuStrip = cmsInsertWhere;
 
             //Если нажата радио-кнопка "Нет" в условиях, то форма с условиями деактивируется
-            bool where = false;
-            if (cbSelectYes.Checked)
-            {
-                where = true;
-            }
-            else
-            {
-                where = false;
-            }
-            if (!where)
+            bool check = cbSelectYes.Checked;
+            if (!check)
             {
                 txtSelectFirstWhere.Enabled = false;
                 txtSelectOperand.Enabled = false;
                 txtSelectSecondWhere.Enabled = false;
                 btnSelectAddWhere.Enabled = false;
                 lbSelectWhere.Enabled = false;
-                txtSelectOperand.Text = txtSelectOperand.Items[1].ToString();
+                txtSelectOperand.Text = txtSelectOperand.Items[0].ToString();
             }
+            check = rbInsertYes.Checked;
+            if (!check)
+            {
+                txtInsertFirstWhere.Enabled = false;
+                txtInsertOperand.Enabled = false;
+                txtInsertSecondWhere.Enabled = false;
+                btnInsertAddWhere.Enabled = false;
+                lbInsertWhere.Enabled = false;
+                txtInsertOperand.Text = txtInsertOperand.Items[0].ToString();
+            }
+
         }
 
         private void btnSelectAddColumn_Click(object sender, EventArgs e)
@@ -189,6 +195,144 @@ namespace QueryGenerator
                 txtSelectSecondWhere.Enabled = true;
                 btnSelectAddWhere.Enabled = true;
                 lbSelectWhere.Enabled = true;
+            }
+        }
+
+        private void tsInsertValueDelete_Click(object sender, EventArgs e)
+        {
+            if (lbInsertValues.SelectedItem != null)
+            {
+                int index = lbInsertValues.SelectedIndex;
+                lbInsertValues.Items.RemoveAt(index);
+            }
+        }
+
+        private void tlInsertColumnDelete_Click(object sender, EventArgs e)
+        {
+            if (lbInsertColumns.SelectedItem != null)
+            {
+                int index = lbInsertColumns.SelectedIndex;
+                lbInsertColumns.Items.RemoveAt(index);
+            }
+        }
+
+        private void tsInsertWhereDelete_Click(object sender, EventArgs e)
+        {
+            if (lbInsertWhere.SelectedItem != null)
+            {
+                int index = lbInsertWhere.SelectedIndex;
+                lbInsertWhere.Items.RemoveAt(index);
+            }
+        }
+
+        private void txtInsertTableName_TextChanged(object sender, EventArgs e)
+        {
+            txtInsertTableName.BackColor = System.Drawing.Color.White;
+        }
+
+        private void txtInsertAddColumn_TextChanged(object sender, EventArgs e)
+        {
+            txtInsertAddColumn.BackColor = System.Drawing.Color.White;
+        }
+
+        private void txtInsertAddValue_TextChanged(object sender, EventArgs e)
+        {
+            txtInsertAddValue.BackColor = System.Drawing.Color.White;
+        }
+
+        private void btnInsertAddColumn_Click(object sender, EventArgs e)
+        {
+            if (IsNullTest.TextBox(txtInsertAddColumn))
+            {
+                lbInsertColumns.BackColor = System.Drawing.Color.White;
+                lbInsertColumns.Items.Add(txtInsertAddColumn.Text);
+                txtInsertAddColumn.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Введите поле таблицы!");
+            }
+        }
+
+        private void btnInsertAddValue_Click(object sender, EventArgs e)
+        {
+            if (IsNullTest.TextBox(txtInsertAddValue))
+            {
+                lbInsertValues.BackColor = System.Drawing.Color.White;
+                lbInsertValues.Items.Add(txtInsertAddValue.Text);
+                txtInsertAddValue.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Введите значение поля!");
+            }
+        }
+
+        private void btnInsertAddWhee_Click(object sender, EventArgs e)
+        {
+            if (IsNullTest.TextBox(txtInsertAddValue))
+            {
+                lbInsertWhere.BackColor = System.Drawing.Color.White;
+                lbInsertWhere.Items.Add($"{txtInsertFirstWhere.Text} {txtInsertOperand.Text} {txtInsertSecondWhere.Text}");
+                txtInsertFirstWhere.Text = "";
+                txtInsertSecondWhere.Text = "";
+                txtInsertOperand.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Введите значение поля!");
+            }
+        }
+
+        private void btnInsertCreateQuery_Click(object sender, EventArgs e)
+        {
+            if (IsNullTest.ListBox(lbInsertColumns,lbInsertValues) && IsNullTest.TextBox(txtInsertTableName))
+            {
+                GetValues values = new GetValues();
+                CreateScript Query = new CreateScript();
+                string column = values.GetValue(values.ParseList(lbInsertColumns));
+                string value = values.GetValue(values.ParseList(lbInsertValues));
+                bool where = rbInsertYes.Checked;
+                if (where)
+                {
+                    if (IsNullTest.ListBox(lbInsertWhere)){
+                        string wheres = values.GetWhere(values.ParseList(lbInsertWhere));
+                        string query_string = Query.CreateQueryWhere(column, value, wheres);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Минимум одно условие!");
+                    }
+                }
+                else
+                {
+                    string query_string = Query.CreateQueryNonWhere(column, value);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Заполните все поля и списки!");
+            }
+        }
+
+        private void rbInsertYes_CheckedChanged(object sender, EventArgs e)
+        {
+            bool check = rbInsertYes.Checked;
+            if (!check)
+            {
+                txtInsertFirstWhere.Enabled = false;
+                txtInsertOperand.Enabled = false;
+                txtInsertSecondWhere.Enabled = false;
+                btnInsertAddWhere.Enabled = false;
+                lbInsertWhere.Enabled = false;
+            }
+            else
+            {
+                txtInsertFirstWhere.Enabled = true;
+                txtInsertOperand.Enabled = true;
+                txtInsertSecondWhere.Enabled = true;
+                btnInsertAddWhere.Enabled = true;
+                lbInsertWhere.Enabled = true;
             }
         }
     }

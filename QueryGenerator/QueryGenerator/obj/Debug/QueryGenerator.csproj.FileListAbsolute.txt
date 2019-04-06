@@ -8,3 +8,5 @@ C:\Users\MrLumus\Documents\C#\QueryGenerator\QueryGenerator\QueryGenerator\Query
 C:\Users\MrLumus\Documents\C#\QueryGenerator\QueryGenerator\QueryGenerator\QueryGenerator\obj\Debug\QueryGenerator.exe
 C:\Users\MrLumus\Documents\C#\QueryGenerator\QueryGenerator\QueryGenerator\QueryGenerator\obj\Debug\QueryGenerator.pdb
 C:\Users\MrLumus\Documents\C#\QueryGenerator\QueryGenerator\QueryGenerator\QueryGenerator\obj\Debug\QueryGenerator.FormQueryGenerator.resources
+C:\Users\Администратор\Documents\Батурин\QueryGenerator\QueryGenerator\QueryGenerator\bin\Debug\QueryGenerator.exe.config
+C:\Users\Администратор\Documents\Батурин\QueryGenerator\QueryGenerator\QueryGenerator\obj\Debug\QueryGenerator.exe

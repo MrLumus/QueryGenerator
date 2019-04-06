@@ -60,12 +60,43 @@
             this.toolStripDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsSelectWhere = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripDeleteWhere = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnInsertCreateQuery = new System.Windows.Forms.Button();
+            this.lbInsertWhere = new System.Windows.Forms.ListBox();
+            this.btnInsertAddWhere = new System.Windows.Forms.Button();
+            this.txtInsertOperand = new System.Windows.Forms.ComboBox();
+            this.txtInsertSecondWhere = new System.Windows.Forms.TextBox();
+            this.txtInsertFirstWhere = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rbInsertNo = new System.Windows.Forms.RadioButton();
+            this.rbInsertYes = new System.Windows.Forms.RadioButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtInsertAddValue = new System.Windows.Forms.TextBox();
+            this.btnInsertAddValue = new System.Windows.Forms.Button();
+            this.btnInsertAddColumn = new System.Windows.Forms.Button();
+            this.lbInsertValues = new System.Windows.Forms.ListBox();
+            this.lbInsertColumns = new System.Windows.Forms.ListBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtInsertAddColumn = new System.Windows.Forms.TextBox();
+            this.txtInsertTableName = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cmsInsertColumn = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsInsertValue = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsInsertWhere = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tlInsertColumnDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsInsertValueDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsInsertWhereDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tpSelect.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tbInsert.SuspendLayout();
             this.cmsSelectColumn.SuspendLayout();
             this.cmsSelectTable.SuspendLayout();
             this.cmsSelectWhere.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.cmsInsertColumn.SuspendLayout();
+            this.cmsInsertValue.SuspendLayout();
+            this.cmsInsertWhere.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -302,6 +333,24 @@
             // 
             // tbInsert
             // 
+            this.tbInsert.Controls.Add(this.btnInsertCreateQuery);
+            this.tbInsert.Controls.Add(this.lbInsertWhere);
+            this.tbInsert.Controls.Add(this.btnInsertAddWhere);
+            this.tbInsert.Controls.Add(this.txtInsertOperand);
+            this.tbInsert.Controls.Add(this.txtInsertSecondWhere);
+            this.tbInsert.Controls.Add(this.txtInsertFirstWhere);
+            this.tbInsert.Controls.Add(this.groupBox2);
+            this.tbInsert.Controls.Add(this.label5);
+            this.tbInsert.Controls.Add(this.txtInsertAddValue);
+            this.tbInsert.Controls.Add(this.btnInsertAddValue);
+            this.tbInsert.Controls.Add(this.btnInsertAddColumn);
+            this.tbInsert.Controls.Add(this.lbInsertValues);
+            this.tbInsert.Controls.Add(this.lbInsertColumns);
+            this.tbInsert.Controls.Add(this.label8);
+            this.tbInsert.Controls.Add(this.label6);
+            this.tbInsert.Controls.Add(this.txtInsertTableName);
+            this.tbInsert.Controls.Add(this.label7);
+            this.tbInsert.Controls.Add(this.txtInsertAddColumn);
             this.tbInsert.Location = new System.Drawing.Point(4, 33);
             this.tbInsert.Margin = new System.Windows.Forms.Padding(6);
             this.tbInsert.Name = "tbInsert";
@@ -374,6 +423,251 @@
             this.toolStripDeleteWhere.Text = "Удалить";
             this.toolStripDeleteWhere.Click += new System.EventHandler(this.toolStripDeleteWhere_Click);
             // 
+            // btnInsertCreateQuery
+            // 
+            this.btnInsertCreateQuery.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnInsertCreateQuery.Location = new System.Drawing.Point(17, 548);
+            this.btnInsertCreateQuery.Name = "btnInsertCreateQuery";
+            this.btnInsertCreateQuery.Size = new System.Drawing.Size(620, 33);
+            this.btnInsertCreateQuery.TabIndex = 26;
+            this.btnInsertCreateQuery.Text = "Сформировать";
+            this.btnInsertCreateQuery.UseVisualStyleBackColor = true;
+            this.btnInsertCreateQuery.Click += new System.EventHandler(this.btnInsertCreateQuery_Click);
+            // 
+            // lbInsertWhere
+            // 
+            this.lbInsertWhere.FormattingEnabled = true;
+            this.lbInsertWhere.ItemHeight = 24;
+            this.lbInsertWhere.Location = new System.Drawing.Point(330, 369);
+            this.lbInsertWhere.Name = "lbInsertWhere";
+            this.lbInsertWhere.Size = new System.Drawing.Size(307, 172);
+            this.lbInsertWhere.TabIndex = 25;
+            // 
+            // btnInsertAddWhere
+            // 
+            this.btnInsertAddWhere.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnInsertAddWhere.Location = new System.Drawing.Point(17, 509);
+            this.btnInsertAddWhere.Name = "btnInsertAddWhere";
+            this.btnInsertAddWhere.Size = new System.Drawing.Size(307, 33);
+            this.btnInsertAddWhere.TabIndex = 24;
+            this.btnInsertAddWhere.Text = "Добавить";
+            this.btnInsertAddWhere.UseVisualStyleBackColor = true;
+            this.btnInsertAddWhere.Click += new System.EventHandler(this.btnInsertAddWhee_Click);
+            // 
+            // txtInsertOperand
+            // 
+            this.txtInsertOperand.DropDownWidth = 100;
+            this.txtInsertOperand.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtInsertOperand.FormattingEnabled = true;
+            this.txtInsertOperand.Items.AddRange(new object[] {
+            "=",
+            ">",
+            "<",
+            ">=",
+            "<=",
+            "IN",
+            "BETWEEN"});
+            this.txtInsertOperand.Location = new System.Drawing.Point(139, 470);
+            this.txtInsertOperand.Name = "txtInsertOperand";
+            this.txtInsertOperand.Size = new System.Drawing.Size(56, 28);
+            this.txtInsertOperand.TabIndex = 23;
+            // 
+            // txtInsertSecondWhere
+            // 
+            this.txtInsertSecondWhere.Location = new System.Drawing.Point(201, 470);
+            this.txtInsertSecondWhere.Name = "txtInsertSecondWhere";
+            this.txtInsertSecondWhere.Size = new System.Drawing.Size(123, 29);
+            this.txtInsertSecondWhere.TabIndex = 21;
+            // 
+            // txtInsertFirstWhere
+            // 
+            this.txtInsertFirstWhere.Location = new System.Drawing.Point(17, 470);
+            this.txtInsertFirstWhere.Name = "txtInsertFirstWhere";
+            this.txtInsertFirstWhere.Size = new System.Drawing.Size(116, 29);
+            this.txtInsertFirstWhere.TabIndex = 22;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rbInsertNo);
+            this.groupBox2.Controls.Add(this.rbInsertYes);
+            this.groupBox2.Location = new System.Drawing.Point(22, 358);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(302, 76);
+            this.groupBox2.TabIndex = 20;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Наличие условий";
+            // 
+            // rbInsertNo
+            // 
+            this.rbInsertNo.AutoSize = true;
+            this.rbInsertNo.Checked = true;
+            this.rbInsertNo.Location = new System.Drawing.Point(64, 32);
+            this.rbInsertNo.Name = "rbInsertNo";
+            this.rbInsertNo.Size = new System.Drawing.Size(62, 28);
+            this.rbInsertNo.TabIndex = 1;
+            this.rbInsertNo.TabStop = true;
+            this.rbInsertNo.Text = "Нет";
+            this.rbInsertNo.UseVisualStyleBackColor = true;
+            // 
+            // rbInsertYes
+            // 
+            this.rbInsertYes.AutoSize = true;
+            this.rbInsertYes.Location = new System.Drawing.Point(6, 32);
+            this.rbInsertYes.Name = "rbInsertYes";
+            this.rbInsertYes.Size = new System.Drawing.Size(52, 28);
+            this.rbInsertYes.TabIndex = 0;
+            this.rbInsertYes.Text = "Да";
+            this.rbInsertYes.UseVisualStyleBackColor = true;
+            this.rbInsertYes.CheckedChanged += new System.EventHandler(this.rbInsertYes_CheckedChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 443);
+            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(86, 24);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Условие";
+            // 
+            // txtInsertAddValue
+            // 
+            this.txtInsertAddValue.Location = new System.Drawing.Point(330, 94);
+            this.txtInsertAddValue.Name = "txtInsertAddValue";
+            this.txtInsertAddValue.Size = new System.Drawing.Size(195, 29);
+            this.txtInsertAddValue.TabIndex = 19;
+            this.txtInsertAddValue.TextChanged += new System.EventHandler(this.txtInsertAddValue_TextChanged);
+            // 
+            // btnInsertAddValue
+            // 
+            this.btnInsertAddValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnInsertAddValue.Location = new System.Drawing.Point(534, 94);
+            this.btnInsertAddValue.Name = "btnInsertAddValue";
+            this.btnInsertAddValue.Size = new System.Drawing.Size(103, 29);
+            this.btnInsertAddValue.TabIndex = 17;
+            this.btnInsertAddValue.Text = "Добавить";
+            this.btnInsertAddValue.UseVisualStyleBackColor = true;
+            this.btnInsertAddValue.Click += new System.EventHandler(this.btnInsertAddValue_Click);
+            // 
+            // btnInsertAddColumn
+            // 
+            this.btnInsertAddColumn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnInsertAddColumn.Location = new System.Drawing.Point(221, 94);
+            this.btnInsertAddColumn.Name = "btnInsertAddColumn";
+            this.btnInsertAddColumn.Size = new System.Drawing.Size(103, 29);
+            this.btnInsertAddColumn.TabIndex = 18;
+            this.btnInsertAddColumn.Text = "Добавить";
+            this.btnInsertAddColumn.UseVisualStyleBackColor = true;
+            this.btnInsertAddColumn.Click += new System.EventHandler(this.btnInsertAddColumn_Click);
+            // 
+            // lbInsertValues
+            // 
+            this.lbInsertValues.FormattingEnabled = true;
+            this.lbInsertValues.ItemHeight = 24;
+            this.lbInsertValues.Location = new System.Drawing.Point(330, 132);
+            this.lbInsertValues.Name = "lbInsertValues";
+            this.lbInsertValues.Size = new System.Drawing.Size(307, 220);
+            this.lbInsertValues.TabIndex = 15;
+            // 
+            // lbInsertColumns
+            // 
+            this.lbInsertColumns.FormattingEnabled = true;
+            this.lbInsertColumns.ItemHeight = 24;
+            this.lbInsertColumns.Location = new System.Drawing.Point(17, 132);
+            this.lbInsertColumns.Name = "lbInsertColumns";
+            this.lbInsertColumns.Size = new System.Drawing.Size(307, 220);
+            this.lbInsertColumns.TabIndex = 16;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(13, 64);
+            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(135, 24);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Поля таблицы";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(326, 67);
+            this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(80, 24);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Данные";
+            // 
+            // txtInsertAddColumn
+            // 
+            this.txtInsertAddColumn.Location = new System.Drawing.Point(17, 94);
+            this.txtInsertAddColumn.Margin = new System.Windows.Forms.Padding(6);
+            this.txtInsertAddColumn.Name = "txtInsertAddColumn";
+            this.txtInsertAddColumn.Size = new System.Drawing.Size(195, 29);
+            this.txtInsertAddColumn.TabIndex = 11;
+            this.txtInsertAddColumn.TextChanged += new System.EventHandler(this.txtInsertAddColumn_TextChanged);
+            // 
+            // txtInsertTableName
+            // 
+            this.txtInsertTableName.Location = new System.Drawing.Point(16, 35);
+            this.txtInsertTableName.Margin = new System.Windows.Forms.Padding(6);
+            this.txtInsertTableName.Name = "txtInsertTableName";
+            this.txtInsertTableName.Size = new System.Drawing.Size(195, 29);
+            this.txtInsertTableName.TabIndex = 11;
+            this.txtInsertTableName.TextChanged += new System.EventHandler(this.txtInsertTableName_TextChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(12, 5);
+            this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(178, 24);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Название таблицы";
+            // 
+            // cmsInsertColumn
+            // 
+            this.cmsInsertColumn.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tlInsertColumnDelete});
+            this.cmsInsertColumn.Name = "cmsInsertColumn";
+            this.cmsInsertColumn.Size = new System.Drawing.Size(119, 26);
+            // 
+            // cmsInsertValue
+            // 
+            this.cmsInsertValue.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsInsertValueDelete});
+            this.cmsInsertValue.Name = "cmsInsertValue";
+            this.cmsInsertValue.Size = new System.Drawing.Size(119, 26);
+            // 
+            // cmsInsertWhere
+            // 
+            this.cmsInsertWhere.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsInsertWhereDelete});
+            this.cmsInsertWhere.Name = "cmsInsertWhere";
+            this.cmsInsertWhere.Size = new System.Drawing.Size(119, 26);
+            // 
+            // tlInsertColumnDelete
+            // 
+            this.tlInsertColumnDelete.Name = "tlInsertColumnDelete";
+            this.tlInsertColumnDelete.Size = new System.Drawing.Size(118, 22);
+            this.tlInsertColumnDelete.Text = "Удалить";
+            this.tlInsertColumnDelete.Click += new System.EventHandler(this.tlInsertColumnDelete_Click);
+            // 
+            // tsInsertValueDelete
+            // 
+            this.tsInsertValueDelete.Name = "tsInsertValueDelete";
+            this.tsInsertValueDelete.Size = new System.Drawing.Size(118, 22);
+            this.tsInsertValueDelete.Text = "Удалить";
+            this.tsInsertValueDelete.Click += new System.EventHandler(this.tsInsertValueDelete_Click);
+            // 
+            // tsInsertWhereDelete
+            // 
+            this.tsInsertWhereDelete.Name = "tsInsertWhereDelete";
+            this.tsInsertWhereDelete.Size = new System.Drawing.Size(118, 22);
+            this.tsInsertWhereDelete.Text = "Удалить";
+            this.tsInsertWhereDelete.Click += new System.EventHandler(this.tsInsertWhereDelete_Click);
+            // 
             // FormQueryGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -392,9 +686,16 @@
             this.tpSelect.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tbInsert.ResumeLayout(false);
+            this.tbInsert.PerformLayout();
             this.cmsSelectColumn.ResumeLayout(false);
             this.cmsSelectTable.ResumeLayout(false);
             this.cmsSelectWhere.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.cmsInsertColumn.ResumeLayout(false);
+            this.cmsInsertValue.ResumeLayout(false);
+            this.cmsInsertWhere.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -431,6 +732,32 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripDelete;
         private System.Windows.Forms.ContextMenuStrip cmsSelectWhere;
         private System.Windows.Forms.ToolStripMenuItem toolStripDeleteWhere;
+        private System.Windows.Forms.Button btnInsertCreateQuery;
+        private System.Windows.Forms.ListBox lbInsertWhere;
+        private System.Windows.Forms.Button btnInsertAddWhere;
+        private System.Windows.Forms.ComboBox txtInsertOperand;
+        private System.Windows.Forms.TextBox txtInsertSecondWhere;
+        private System.Windows.Forms.TextBox txtInsertFirstWhere;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton rbInsertNo;
+        private System.Windows.Forms.RadioButton rbInsertYes;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtInsertAddValue;
+        private System.Windows.Forms.Button btnInsertAddValue;
+        private System.Windows.Forms.Button btnInsertAddColumn;
+        private System.Windows.Forms.ListBox lbInsertValues;
+        private System.Windows.Forms.ListBox lbInsertColumns;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtInsertTableName;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtInsertAddColumn;
+        private System.Windows.Forms.ContextMenuStrip cmsInsertColumn;
+        private System.Windows.Forms.ContextMenuStrip cmsInsertValue;
+        private System.Windows.Forms.ContextMenuStrip cmsInsertWhere;
+        private System.Windows.Forms.ToolStripMenuItem tlInsertColumnDelete;
+        private System.Windows.Forms.ToolStripMenuItem tsInsertValueDelete;
+        private System.Windows.Forms.ToolStripMenuItem tsInsertWhereDelete;
     }
 }
 

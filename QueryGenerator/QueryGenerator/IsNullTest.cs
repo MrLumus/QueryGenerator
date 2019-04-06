@@ -30,9 +30,16 @@ namespace QueryGenerator
                 if (t.Text == "")
                 {
                     result = false;
+                    t.BackColor = System.Drawing.Color.FromArgb(252, 220, 220);
                 }
             }
-            
+            if (result)
+            {
+                foreach (TextBox t in text)
+                {
+                    t.BackColor = System.Drawing.Color.White;
+                }
+            }
             return result;
         }
 
