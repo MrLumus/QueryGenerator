@@ -152,10 +152,18 @@ namespace QueryGenerator
         private void btnSelectAddWhere_Click(object sender, EventArgs e)
         {
             string where = null;
-            if(IsNullTest.TextBox(txtSelectFirstWhere,txtSelectSecondWhere) && IsNullTest.ComboBox(txtSelectOperand))
+            var res = 0;
+            if (IsNullTest.TextBox(txtSelectFirstWhere,txtSelectSecondWhere) && IsNullTest.ComboBox(txtSelectOperand))
             {
                 lbSelectWhere.BackColor = System.Drawing.Color.White;
-                where = $"{txtSelectFirstWhere.Text} {txtSelectOperand.Text} {txtSelectSecondWhere.Text}";
+                if (Int32.TryParse(txtSelectSecondWhere.Text, out res))
+                {
+                    where = $"{txtSelectFirstWhere.Text} {txtSelectOperand.Text} {txtSelectSecondWhere.Text}";
+                }
+                else
+                {
+                    where = $"{txtSelectFirstWhere.Text} {txtSelectOperand.Text} '{txtSelectSecondWhere.Text}'";
+                }
                 lbSelectWhere.Items.Add(where);
                 txtSelectFirstWhere.Text = "";
                 txtSelectSecondWhere.Text = "";
@@ -270,10 +278,20 @@ namespace QueryGenerator
 
         private void btnInsertAddWhee_Click(object sender, EventArgs e)
         {
+            string where = null;
+            var res = 0;
             if (IsNullTest.TextBox(txtInsertFirstWhere, txtInsertSecondWhere) && IsNullTest.ComboBox(txtInsertOperand))
             {
                 lbInsertWhere.BackColor = System.Drawing.Color.White;
-                lbInsertWhere.Items.Add($"{txtInsertFirstWhere.Text} {txtInsertOperand.Text} {txtInsertSecondWhere.Text}");
+                if (Int32.TryParse(txtInsertSecondWhere.Text, out res))
+                {
+                    where = $"{txtInsertFirstWhere.Text} {txtInsertOperand.Text} {txtInsertSecondWhere.Text}";
+                }
+                else
+                {
+                    where = $"{txtInsertFirstWhere.Text} {txtInsertOperand.Text} '{txtInsertSecondWhere.Text}'";
+                }
+                lbInsertWhere.Items.Add(where);
                 txtInsertFirstWhere.Text = "";
                 txtInsertSecondWhere.Text = "";
                 txtInsertOperand.Text = "";

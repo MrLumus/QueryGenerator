@@ -16,15 +16,15 @@ namespace QueryGenerator
 
             if (countRow == 1)
             {
-                value = arr[0];
+                    value = arr[0];
             }
             else
             {
                 for (int i = 0; i < countRow-1; i++)
-                {
-                    value += arr[i] + ", ";
+                {  
+                        value += arr[i] + ", ";
                 }
-                value += arr[countRow - 1];
+                value += arr[countRow - 1]; ;
             }
             return value;
         }
@@ -35,15 +35,15 @@ namespace QueryGenerator
 
             if (countRow == 1)
             {
-                value = arr[0];
+                    value = arr[0];
             }
             else
             {
                 for (int i = 0; i < countRow - 1; i++)
                 {
-                    value += arr[i] + " AND ";
+                        value += arr[i] + " AND ";
                 }
-                value += arr[countRow - 1];
+                value += arr[countRow - 1]; ;
             }
             return value;
         }
