@@ -127,7 +127,7 @@ namespace QueryGenerator
                     {
                         // КОД С УСЛОВИЯМИ
                         string wheres = selected.GetWhere(selected.ParseList(lbSelectWhere));
-                        string query = Query.CreateQueryWhere(items, tables, wheres);
+                        string query = Query.CreateQuerySelectWhere(items, tables, wheres);
                         MessageBox.Show(query);
                     }
                     else
@@ -139,7 +139,7 @@ namespace QueryGenerator
                 else
                 {
                     // КОД БЕЗ УСЛОВИЙ
-                    string query = Query.CreateQueryNonWhere(items, tables);
+                    string query = Query.CreateQuerySelectNonWhere(items, tables);
                     MessageBox.Show(query);
                 }
             }
@@ -270,7 +270,7 @@ namespace QueryGenerator
 
         private void btnInsertAddWhee_Click(object sender, EventArgs e)
         {
-            if (IsNullTest.TextBox(txtInsertAddValue))
+            if (IsNullTest.TextBox(txtInsertFirstWhere, txtInsertSecondWhere) && IsNullTest.ComboBox(txtInsertOperand))
             {
                 lbInsertWhere.BackColor = System.Drawing.Color.White;
                 lbInsertWhere.Items.Add($"{txtInsertFirstWhere.Text} {txtInsertOperand.Text} {txtInsertSecondWhere.Text}");
@@ -290,6 +290,7 @@ namespace QueryGenerator
             {
                 GetValues values = new GetValues();
                 CreateScript Query = new CreateScript();
+                string tableName = txtInsertTableName.Text;
                 string column = values.GetValue(values.ParseList(lbInsertColumns));
                 string value = values.GetValue(values.ParseList(lbInsertValues));
                 bool where = rbInsertYes.Checked;
@@ -297,7 +298,8 @@ namespace QueryGenerator
                 {
                     if (IsNullTest.ListBox(lbInsertWhere)){
                         string wheres = values.GetWhere(values.ParseList(lbInsertWhere));
-                        string query_string = Query.CreateQueryWhere(column, value, wheres);
+                        string query_string = Query.CreateQueryInsertWhere(tableName, column, value, wheres);
+                        MessageBox.Show(query_string);
                     }
                     else
                     {
@@ -306,7 +308,8 @@ namespace QueryGenerator
                 }
                 else
                 {
-                    string query_string = Query.CreateQueryNonWhere(column, value);
+                    string query_string = Query.CreateQueryInsertNonWhere(tableName, column, value);
+                    MessageBox.Show(query_string);
                 }
             }
             else
