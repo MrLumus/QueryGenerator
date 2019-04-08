@@ -266,8 +266,16 @@ namespace QueryGenerator
         {
             if (IsNullTest.TextBox(txtInsertAddValue))
             {
+                var res = 0;
                 lbInsertValues.BackColor = System.Drawing.Color.White;
-                lbInsertValues.Items.Add(txtInsertAddValue.Text);
+                if (Int32.TryParse(txtInsertAddValue.Text, out res))
+                {
+                    lbInsertValues.Items.Add(txtInsertAddValue.Text);
+                }
+                else
+                {
+                    lbInsertValues.Items.Add($"'{txtInsertAddValue.Text}'");
+                }
                 txtInsertAddValue.Text = "";
             }
             else
